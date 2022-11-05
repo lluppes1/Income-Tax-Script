@@ -1,0 +1,151 @@
+%%
+%% Initial user input.
+%%
+income = input('Enter your income:','s');
+adjustedIncome = str2num(income) - 10300;
+%%
+%% Checks if user input is a positive numerical value. Prompts user to input acceptable value if not the case.
+%%
+while str2num(income) < 0
+    disp('Please enter a positive value.')
+    clear income adjustedIncome
+    income = (input('Enter your income:','s'));
+    adjustedIncome = str2num(income) - 10300;
+end
+
+while ~isnan(str2double(income)) == 0
+    disp('Please enter a numerical value.')
+    clear income adjustedIncome
+    income = (input('Enter your income:','s'));
+    adjustedIncome = str2num(income) - 10300;
+    while str2num(income) < 0
+        disp('Please enter a positive value.')
+        clear income adjustedIncome
+        income = (input('Enter your income:','s'));
+        adjustedIncome = str2num(income) - 10300;
+    end
+end
+%%
+%% Asks User if they want to try again if their taxable income was less than or equal to zero.
+%%
+if adjustedIncome <= 0
+    clear income adjustedIncome
+    disp('You do not owe any taxes.')
+    tryAgain = input('Would you like to try again?(Y/N):','s');
+else
+    incomeTax(adjustedIncome)
+end
+%%
+%% Checks to see if User input is either "Y" or "N". Prompts user to input acceptable value if not the case.
+%%
+while ~isnan(str2double(tryAgain)) == 1
+        disp('Please enter only "Y" or "N"')
+        clear tryAgain
+        tryAgain = input('','s');
+end
+%%
+%% Restarts Script if user inputted "Y". Ends script if user's taxable income is still less than or equal to zero. 
+%%
+while strcmp(tryAgain, 'Y')
+        clear income adjustedIncome
+        income = input('Enter your income:','s');
+        adjustedIncome = str2num(income) - 10300;
+    while str2num(income) < 0
+        disp('Please enter a positive value.')
+        clear income adjustedIncome
+        income = (input('Enter your income:','s'));
+        adjustedIncome = str2num(income) - 10300;
+    end
+    while ~isnan(str2double(income)) == 0
+        disp('Please enter a numerical value.')
+        clear income adjustedIncome
+        income = (input('Enter your income:','s'));
+        adjustedIncome = str2num(income) - 10300;
+        while str2num(income) < 0
+            disp('Please enter a positive value.')
+            clear income adjustedIncome
+            income = (input('Enter your income:','s'));
+            adjustedIncome = str2num(income) - 10300;
+        end
+    end
+    while ~isnan(str2double(income)) == 0
+        disp('Please enter a numerical value.')
+        clear income adjustedIncome
+        income = (input('Enter your income:','s'));
+        adjustedIncome = str2num(income) - 10300;
+    end
+    if adjustedIncome <= 0
+        disp('You do not owe any taxes.')
+        tryAgain = 'N';
+    else
+        incomeTax(adjustedIncome)
+        tryAgain = 'N';
+    end
+end
+%%
+%% Checks to see if User input is either "Y" or "N". Prompts user to input acceptable value if not the case.
+%%
+while strcmp(tryAgain,'N') == 0
+    disp('Please enter only "Y" or "N"')
+    clear tryAgain
+    tryAgain = input('','s');
+    while strcmp(tryAgain, 'Y')
+        clear income adjustedIncome
+        income = input('Enter your income:','s');
+        adjustedIncome = str2num(income) - 10300;
+        while str2num(income) < 0
+            disp('Please enter a positive value.')
+            clear income adjustedIncome
+            income = (input('Enter your income:','s'));
+            adjustedIncome = str2num(income) - 10300;
+        end
+        while str2num(income) < 0
+            disp('Please enter a positive value.')
+            clear income adjustedIncome
+            income = input('Enter your income:','s');
+            adjustedIncome = str2num(income) - 10300;
+            while ~isnan(str2double(income)) == 0
+                disp('Please enter a numerical value.')
+                clear income adjustedIncome
+                income = (input('Enter your income:','s'));
+                adjustedIncome = str2num(income) - 10300;
+            end
+        end
+        while ~isnan(str2double(income)) == 0
+            disp('Please enter a numerical value.')
+            clear income adjustedIncome
+            income = (input('Enter your income:','s'));
+            adjustedIncome = str2num(income) - 10300;
+            while str2num(income) < 0
+                disp('Please enter a positive value.')
+                clear income adjustedIncome
+                income = (input('Enter your income:','s'));
+                adjustedIncome = str2num(income) - 10300;
+            end
+        end
+        while ~isnan(str2double(income)) == 0
+            disp('Please enter a numerical value.')
+            clear income adjustedIncome
+            income = (input('Enter your income:','s'));
+            adjustedIncome = str2num(income) - 10300;
+        end
+        if adjustedIncome <= 0
+            disp('You do not owe any taxes.')
+            tryAgain = 'N';
+        else
+            incomeTax(adjustedIncome)
+            tryAgain = 'N';
+        end
+    end
+end
+
+%%
+%% Script ends if either user initially inputted a taxable income greater than 0 or if user inputted "N" when asked to try again.
+%% Function to calculate total amount in taxes due and effective tax rate defined below. 
+%%
+function incomeTax(adjustedIncome)
+    totalTax = adjustedIncome;   
+    effectiveTaxRate = adjustedIncome;
+    disp(['Amount in Taxes due:',num2str(totalTax)])
+    disp(['Effective Tax Rate:',num2str(effectiveTaxRate),'%'])
+end
