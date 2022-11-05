@@ -34,6 +34,7 @@ if adjustedIncome <= 0
     tryAgain = input('Would you like to try again?(Y/N):','s');
 else
     incomeTax(adjustedIncome)
+    tryAgain = 'N';
 end
 %%
 %% Checks to see if User input is either "Y" or "N". Prompts user to input acceptable value if not the case.
